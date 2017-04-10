@@ -1,3 +1,18 @@
 <h1>
   {{title}}
 </h1>
+
+<button type="" (click)="add()">Add</button>
+
+<ul>
+  <li *ngFor="let cuisine of _cuisines | async">{{ cuisine.$key + '- ' + cuisine.$value }}</li>
+</ul>
+
+<ul>
+  <li *ngFor="let restaurant of _restaurants | async"> {{ restaurant.name }} - {{ (restaurant.cuisineType | async)?.$value }}
+    
+    <ul>
+      <li *ngFor="let feature of restaurant.featureType"> {{ (feature | async)?.$value }}</li>
+    </ul>
+  </li>
+</ul>
